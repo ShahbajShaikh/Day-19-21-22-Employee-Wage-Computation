@@ -209,3 +209,47 @@ public class EmpWageComputation {
                 EmpWagesMonthly();
         }
 }
+
+
+//UC8 Multiple Companies Employee Wages
+import java.util.Scanner;
+public class EmpWageComputation {
+	public static final int IS_PART_TIME = 1;
+	public static final int IS_FULL_TIME = 2;
+
+	public static void empMonthlyWages(int wagePerHour,int workingDays,int workingHours){
+		int empHours=0;
+		int totalWorkingDays=0, totalEmpHours=0;
+		int empCheck=(int) Math.floor(Math.random() * 10) % 3;
+		while (totalEmpHours <= workingHours && totalWorkingDays < workingDays){
+                        totalWorkingDays++;
+			switch(empCheck){
+				case IS_PART_TIME:
+					empHours=8;
+					break;
+				case IS_FULL_TIME:
+					empHours=4;
+					break;
+				default:
+					empHours=0;
+			}
+		totalEmpHours += empHours;
+		}
+	System.out.println("Total Employee Working Hour - "+totalEmpHours);
+        System.out.println("Total Employee Working Days - "+totalWorkingDays);
+        int totalEmpWage = totalEmpHours * wagePerHour;
+        System.out.println("Total employee wage - "+totalEmpWage);
+	}
+
+	public static void main(String[] args){
+		System.out.println("Welcome to Employee Wage Computation");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter the wage per hour");
+		int wagePerHour=sc.nextInt();
+		System.out.println("enter the number of working days");
+		int numWorkingDays=sc.nextInt();
+		System.out.println("enter the number of working hour");
+		int numWorkingHours=sc.nextInt();
+		empMonthlyWages(wagePerHour,numWorkingDays,numWorkingHours);
+	}
+}
